@@ -1,12 +1,12 @@
 .card {
   margin: 40px;
   padding: 30px;
-  width: 250px;
+  width: 350px;
   border-radius: 18px;
   color: black;
   font-size: 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: lightgreen;
+  background-color: lightseagreen;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -23,12 +23,20 @@
 }
 
 .temperature {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
 }
 
 .winddirection {
-  width: 200px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.weathercode {
   display: flex;
   justify-content: center;
   flex-direction: column;
