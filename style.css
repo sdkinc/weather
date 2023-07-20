@@ -1,0 +1,41 @@
+.card {
+  margin: 40px;
+  padding: 30px;
+  width: 250px;
+  border-radius: 18px;
+  color: black;
+  font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: lightgreen;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card-element {
+  margin: 20px;
+}
+
+.place {
+  font-size: 35px;
+}
+
+.temperature {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.winddirection {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.img-weathercode {
+  width: 200px;
+}
