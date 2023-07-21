@@ -10,7 +10,7 @@ async function getGeoFromAPI() {
     const obj = await res.json();
     const { longitude, latitude, city, country_code } = obj;
     placeElement.textContent += ` ${city}, ${country_code}`;
-    getWeatherByLocation(latitude, longitude);
+    getWeatherByLocation(longitude,latitude);
 }
 
 async function getWeatherByLocation(longitude, latitude) {
