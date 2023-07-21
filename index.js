@@ -14,7 +14,7 @@ async function getGeoFromAPI() {
 }
 
 async function getWeatherByLocation(longitude, latitude) {
-    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&windspeed_unit=ms`);
     const weather = await res.json();
     console.log(weather);
     const { temperature, windspeed, winddirection, is_day, time, weathercode } = weather.current_weather;
