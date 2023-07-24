@@ -1,5 +1,8 @@
+body {
+  display: flex;
+}
 .card {
-  margin: 40px;
+  margin: 30px;
   padding: 30px;
   width: 350px;
   border-radius: 18px;

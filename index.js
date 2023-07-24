@@ -1,3 +1,4 @@
+const cityImgElement = document.getElementById("image-card");
 const temperatureElement = document.getElementById("temperature");
 const placeElement = document.getElementById("place");
 const windspeedElement = document.getElementById("windspeed");
@@ -23,6 +24,7 @@ async function getWeatherByLocation(longitude, latitude) {
     console.log(weathercode);
     console.log(getWEatherDescriptionByWeatherCode(weathercode));
     const { textDescr, icon } = getWEatherDescriptionByWeatherCode(weathercode);
+    getPictureByGeo(latitude,longitude);
     txtWeathercodeElement.innerText = textDescr;
     imgWeathercodeElement.src = icon;
     console.log(winddirection);
@@ -37,30 +39,47 @@ function getWEatherDescriptionByWeatherCode(weatherCode) {
         case 3: return { "textDescr": "Overcast", "icon": "https://cdn-icons-png.flaticon.com/128/4814/4814293.png" };
         case 48: return { "textDescr": "Fog and depositing rime fog", "icon": "https://cdn-icons-png.flaticon.com/128/5243/5243833.png" };
         case 45: return { "textDescr": "Fog and depositing rime fog", "icon": "https://cdn-icons-png.flaticon.com/128/5243/5243833.png" };
-        case 51: return { "textDescr": "Drizzle: light", "icon": "https://img.icons8.com/?size=1x&id=NjsqgHjrCASE&format=png" };
-        case 53: return { "textDescr": "Drizzle: moderate", "icon": "https://img.icons8.com/?size=1x&id=NjsqgHjrCASE&format=png" };
-        case 55: return { "textDescr": "Drizzle: dense intensity", "icon": "https://img.icons8.com/?size=1x&id=NjsqgHjrCASE&format=png" };
-        case 57: return { "textDescr": "Freezing Drizzle: light", "icon": "https://img.icons8.com/?size=1x&id=JPFoI922p1gw&format=png" };
-        case 56: return { "textDescr": "Freezing Drizzle: dense intensity", "icon": "https://img.icons8.com/?size=1x&id=JPFoI922p1gw&format=png" };
-        case 61: return { "textDescr": "Rain: slight", "icon": "https://cdn-icons-png.flaticon.com/128/414/414966.png" };
-        case 63: return { "textDescr": "Rain: moderate", "icon": "https://cdn-icons-png.flaticon.com/128/414/414966.png" };
-        case 65: return { "textDescr": "Rain: heavy intensity", "icon": "https://cdn-icons-png.flaticon.com/128/414/414966.png" };
-        case 66: return { "textDescr": "Freezing Rain: light", "icon": "https://cdn-icons-png.flaticon.com/128/3628/3628484.png" };
-        case 67: return { "textDescr": "Freezing Rain: heavy intensity", "icon": "https://cdn-icons-png.flaticon.com/128/3628/3628484.png" };
+        case 51: return { "textDescr": "Drizzle light", "icon": "https://img.icons8.com/?size=1x&id=NjsqgHjrCASE&format=png" };
+        case 53: return { "textDescr": "Drizzle moderate", "icon": "https://img.icons8.com/?size=1x&id=NjsqgHjrCASE&format=png" };
+        case 55: return { "textDescr": "Drizzle dense intensity", "icon": "https://img.icons8.com/?size=1x&id=NjsqgHjrCASE&format=png" };
+        case 57: return { "textDescr": "Freezing Drizzle light", "icon": "https://img.icons8.com/?size=1x&id=JPFoI922p1gw&format=png" };
+        case 56: return { "textDescr": "Freezing Drizzle dense intensity", "icon": "https://img.icons8.com/?size=1x&id=JPFoI922p1gw&format=png" };
+        case 61: return { "textDescr": "Rain slight", "icon": "https://cdn-icons-png.flaticon.com/128/414/414966.png" };
+        case 63: return { "textDescr": "Rain moderate", "icon": "https://cdn-icons-png.flaticon.com/128/414/414966.png" };
+        case 65: return { "textDescr": "Rain heavy intensity", "icon": "https://cdn-icons-png.flaticon.com/128/414/414966.png" };
+        case 66: return { "textDescr": "Freezing Rain light", "icon": "https://cdn-icons-png.flaticon.com/128/3628/3628484.png" };
+        case 67: return { "textDescr": "Freezing Rain heavy intensity", "icon": "https://cdn-icons-png.flaticon.com/128/3628/3628484.png" };
         case 71: return { "textDescr": "Snow fall: slight", "icon": "https://cdn-icons-png.flaticon.com/128/1409/1409310.png" };
         case 73: return { "textDescr": "Snow fall: moderate", "icon": "https://cdn-icons-png.flaticon.com/128/1409/1409310.png" };
         case 75: return { "textDescr": "Snow fall: heavy intensity", "icon": "https://cdn-icons-png.flaticon.com/128/1409/1409310.png" };
         case 77: return { "textDescr": "Snow grains", "icon": "https://cdn-icons-png.flaticon.com/128/1409/1409310.png" };
-        case 80: return { "textDescr": "Rain showers: slight", "icon": "https://cdn-icons-png.flaticon.com/128/9755/9755226.png" };
-        case 81: return { "textDescr": "Rain showers: moderate", "icon": "https://cdn-icons-png.flaticon.com/128/9755/9755226.png" };
-        case 82: return { "textDescr": "Rain showers: violent", "icon": "https://cdn-icons-png.flaticon.com/128/9755/9755226.png" };
+        case 80: return { "textDescr": "Rain showers slight", "icon": "https://cdn-icons-png.flaticon.com/128/9755/9755226.png" };
+        case 81: return { "textDescr": "Rain showers moderate", "icon": "https://cdn-icons-png.flaticon.com/128/9755/9755226.png" };
+        case 82: return { "textDescr": "Rain showers violent", "icon": "https://cdn-icons-png.flaticon.com/128/9755/9755226.png" };
         case 85: return { "textDescr": "Snow showers slight and heavy", "icon": "https://cdn-icons-png.flaticon.com/128/1409/1409310.png" };
         case 86: return { "textDescr": "Snow showers slight and heavy", "icon": "https://cdn-icons-png.flaticon.com/128/1409/1409310.png" };
-        case 95: return { "textDescr": "Thunderstorm: Slight or moderate", "icon": "https://cdn-icons-png.flaticon.com/128/1409/1409310.png" };
+        case 95: return { "textDescr": "Thunderstorm moderate", "icon": "https://cdn-icons-png.flaticon.com/128/1409/1409310.png" };
         case 96: return { "textDescr": "Thunderstorm with slight", "icon": "https://cdn-icons-png.flaticon.com/128/2042/2042235.png" };
         case 99: return { "textDescr": "Thunderstorm heavy hail", "icon": "https://cdn-icons-png.flaticon.com/128/2042/2042235.png" };
         default: return { "textDescr": "Clear sky", "icon": "https://cdn-icons-png.flaticon.com/128/3226/3226453.png" };
     }
+}
+
+async function getPictureByGeo(latitude, longitude){
+    let str = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=dc01897704727a6349f82348b348b012&lat=${latitude}&lon=${longitude}&per_page=1&format=json&nojsoncallback=1`;
+    const res = await fetch(str);
+    const obj = await res.json();
+    const {photos} = obj;
+    const {photo} = photos;
+    if (photo.length > 0){
+        const {farm,server,id, secret  } = photo[0];
+        str = `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+    }else{
+        str = '';
+    }
+    console.log(str);
+    cityImgElement.style=`background-image: url('${str}'); background-repeat: no-repeat;  background-position: center; background-color: lightseagreen;`;
+    // 
 }
 
 getGeoFromAPI();
