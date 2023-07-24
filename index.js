@@ -27,8 +27,7 @@ async function getWeatherByLocation(longitude, latitude) {
     getPictureByGeo(latitude,longitude);
     txtWeathercodeElement.innerText = textDescr;
     imgWeathercodeElement.src = icon;
-    console.log(winddirection);
-    imgWinddirectionElement.style.transform = `rotate(${winddirection}deg)`;
+    imgWinddirectionElement.style.transform = `rotate(${winddirection-90}deg)`;
 }
 
 function getWEatherDescriptionByWeatherCode(weatherCode) {
